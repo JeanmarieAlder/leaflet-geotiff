@@ -134,7 +134,7 @@ L.LeafletGeotiff = L.ImageOverlay.extend({
             var scale = this._map.getZoomScale(e.zoom),
                 nw = this._map.getBounds().getNorthWest(),
                 se = this._map.getBounds().getSouthEast(),
-                topLeft = this._map._latLngToNewLayerPoint(nw, e.zoom, e.center),
+                var topLeft = this._map._latLngToNewLayerPoint(nw, e.zoom, e.center),
                 size = this._map._latLngToNewLayerPoint(se, e.zoom, e.center)._subtract(topLeft);
             this._image.style[L.DomUtil.TRANSFORM] =
 		        L.DomUtil.getTranslateString(topLeft) + ' scale(' + scale + ') ';
@@ -143,7 +143,7 @@ L.LeafletGeotiff = L.ImageOverlay.extend({
     _reset: function () {
         if (this.hasOwnProperty('_map')) {
             if (this._rasterBounds) {
-                topLeft = this._map.latLngToLayerPoint(this._map.getBounds().getNorthWest()),
+                var topLeft = this._map.latLngToLayerPoint(this._map.getBounds().getNorthWest()),
                 size = this._map.latLngToLayerPoint(this._map.getBounds().getSouthEast())._subtract(topLeft);
 
                 L.DomUtil.setPosition(this._image, topLeft);
@@ -175,7 +175,7 @@ L.LeafletGeotiff = L.ImageOverlay.extend({
     _drawImage: function () {
         if (this.raster.hasOwnProperty('data')) {
 			var args = {};
-            topLeft = this._map.latLngToLayerPoint(this._map.getBounds().getNorthWest()),
+            var topLeft = this._map.latLngToLayerPoint(this._map.getBounds().getNorthWest()),
             size = this._map.latLngToLayerPoint(this._map.getBounds().getSouthEast())._subtract(topLeft);
             args.rasterPixelBounds = L.bounds(this._map.latLngToContainerPoint(this._rasterBounds.getNorthWest()),this._map.latLngToContainerPoint(this._rasterBounds.getSouthEast()));
             args.xStart = (args.rasterPixelBounds.min.x>0 ? args.rasterPixelBounds.min.x : 0);
