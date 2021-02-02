@@ -134,7 +134,7 @@ L.LeafletGeotiff = L.ImageOverlay.extend({
             var scale = this._map.getZoomScale(e.zoom),
                 nw = this._map.getBounds().getNorthWest(),
                 se = this._map.getBounds().getSouthEast(),
-                var topLeft = this._map._latLngToNewLayerPoint(nw, e.zoom, e.center),
+                topLeft = this._map._latLngToNewLayerPoint(nw, e.zoom, e.center),
                 size = this._map._latLngToNewLayerPoint(se, e.zoom, e.center)._subtract(topLeft);
             this._image.style[L.DomUtil.TRANSFORM] =
 		        L.DomUtil.getTranslateString(topLeft) + ' scale(' + scale + ') ';
